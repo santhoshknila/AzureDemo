@@ -27,23 +27,16 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-- task: VSTest@2
-  displayName: "Server Unit Test1"
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\*test*.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
+
 - task: VSTest@2
   displayName: "Server Unit Test"
   inputs:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      **\AzureDemo.*test*.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
+      **\$(BuildConfiguration)\*test*.dll
+           **\$(BuildConfiguration)\**\*test*.dll
+           !**\*Microsoft.VisualStudio.TestPlatform*
+           !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     runTestsInIsolation: true
     codeCoverageEnabled: true
