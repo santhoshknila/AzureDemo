@@ -34,9 +34,9 @@ steps:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
       **\$(BuildConfiguration)\*test*.dll
-           **\$(BuildConfiguration)\**\*test*.dll
-           !**\*Microsoft.VisualStudio.TestPlatform*
-           !**\obj\**
+      **\$(BuildConfiguration)\**\*test*.dll
+      !**\*Microsoft.VisualStudio.TestPlatform*
+      !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     runTestsInIsolation: true
     codeCoverageEnabled: true
