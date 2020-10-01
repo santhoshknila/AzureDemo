@@ -29,14 +29,12 @@ steps:
     configuration: '$(buildConfiguration)'
 - task: VSTest@2
   inputs:
-    testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      **\AzureDemo.*test*.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-    runTestsInIsolation: true
-    codeCoverageEnabled: true
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+     **\$(BuildConfiguration)\*test*.dll
+     !**\obj\**
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+    diagnosticsEnabled: True
+  enabled: true
+
      
