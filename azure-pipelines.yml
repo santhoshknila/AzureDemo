@@ -33,12 +33,11 @@ steps:
   inputs:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      **\$(BuildConfiguration)\*test*.dll
-      **\$(BuildConfiguration)\**\*test*.dll
-      !**\*Microsoft.VisualStudio.TestPlatform*
+      **\$(BuildConfiguration)\*\*AzureDemo.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     runTestsInIsolation: true
     codeCoverageEnabled: true
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    rerunFailedTests: false
